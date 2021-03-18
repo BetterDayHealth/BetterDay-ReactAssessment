@@ -23,6 +23,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .yarn/*
-
-# additional ignores
-yarn.lock

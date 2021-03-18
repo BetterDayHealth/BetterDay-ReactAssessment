@@ -4,7 +4,8 @@
   "private": true,
   "author": "Better Day™ Health (www.betterdayhealth.com)",
   "scripts": {
-    "start-api": "json-server --port 3010 --watch ./api/data.json"
+    "start-api": "json-server --port 3010 --watch ./api/data.json",
+    "start-client": "cd react-app & npm start"
   },
   "devDependencies": {
     "json-server": "^0.16.3",
