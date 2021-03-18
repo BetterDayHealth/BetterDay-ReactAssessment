@@ -30,7 +30,7 @@ The application should have the following workflow:
 1. Choose a patient from the list.
 2. Preview all patient profile data.
 3. Press edit to load the form with patient data.
-4. Provide a "Save" button that updates the data to the `api/data.json` file.
+4. Provide a "Save" button that updates data to the `api/data.json` file.
 
 ## Requirements
 
