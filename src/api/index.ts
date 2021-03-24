@@ -1,14 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 import { Configuration } from "../configuration";
-import { PatientDetailsModel } from "./models/patient-details-model";
-import { PatientModel } from "./models/patient-model";
+import { PatientDetailsModel } from "../models/patient-details-model";
+import { PatientModel } from "../models/patient-model";
 
 export const API = new class APIClass {
     private buildPath(pathname: string): string {
         if (!pathname.startsWith("/")) {
             pathname = `/${pathname}`;
         }
-
         return `${Configuration.API.host}${pathname}`;
     }
 
