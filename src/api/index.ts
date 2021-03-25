@@ -30,4 +30,5 @@ export const API = new class APIClass {
         };
         await axios.put<PatientDetailsModel>(this.buildPath(`/patients/${id}`), patientModel);
     }
+
 }();

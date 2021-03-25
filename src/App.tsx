@@ -12,11 +12,11 @@ const App: React.FC = () => {
     <Router>
       <Header />
       <Switch>
-        <Route path="/patients">
-          <PatientsPage />
-        </Route>
-        <Route path="/profile">
+        <Route path="/profile/:patientId">
           <ProfilePage />
+        </Route>
+        <Route path="/">
+          <PatientsPage />
         </Route>
       </Switch>
     </Router >

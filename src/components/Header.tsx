@@ -29,8 +29,7 @@ const Header: React.FC = () => {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters={true}>
-          <NavLink activeClassName={classes.linkActive} to="/patients" className={classes.link}>All Patients</NavLink>
-          <NavLink activeClassName={classes.linkActive} to="/profile" className={classes.link}>Profile</NavLink>
+          <NavLink activeClassName={classes.linkActive} to="/" className={classes.link}>All Patients</NavLink>
         </Toolbar>
       </Container>
     </AppBar>
