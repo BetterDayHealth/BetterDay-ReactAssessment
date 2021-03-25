@@ -4,7 +4,7 @@ import {
   PATIENTS_LOAD_SUCCESS,
   PATIENTS_LOAD_FAIL,
   PatientDispatchTypes
-} from './patientActionTypes';
+} from '../actionTypes/patientActionTypes';
 import { PatientModel } from '../../models/patient-model';
 import { API } from '../../api';
 

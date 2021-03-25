@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { patientReducer } from './patientReducer';
+import { profileReducer } from './profileReducer';
 
 export const rootReducer = combineReducers({
-  patientsState: patientReducer
+  patientsState: patientReducer,
+  profileState: profileReducer,
 });

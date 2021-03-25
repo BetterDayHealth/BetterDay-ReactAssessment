@@ -4,8 +4,7 @@ import {
   PATIENTS_LOAD_FAIL,
   PATIENTS_LOAD_SUCCESS,
   PatientDispatchTypes
-
-} from '../actions/patientActionTypes'
+} from '../actionTypes/patientActionTypes'
 
 export interface PatientStore {
   loading: boolean,
