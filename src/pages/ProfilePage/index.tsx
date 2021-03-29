@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ProfileRouteParams } from '../../types/routeParamTypes';
 import { RootStore } from '../../store';
-import { getProfile } from '../../store/actions/profileActions';
+import { getProfile, updateProfile } from '../../store/actions/profileActions';
+import { PatientDetailsModel } from '../../models/patient-details-model';
 
 import Profile from './Profile';
 
@@ -20,6 +21,11 @@ const ProfilePage: React.FC = () => {
   useEffect(() => {
     dispatch(getProfile(+patientId))
   }, []);
+
+  const updatePatient = (model: PatientDetailsModel) => {
+    dispatch(updateProfile(model));
+  }
+
 
   return (
     <Container>

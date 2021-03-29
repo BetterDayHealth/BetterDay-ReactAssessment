@@ -3,17 +3,19 @@ import {
   PROFILE_LOADING,
   PROFILE_LOAD_FAIL,
   PROFILE_LOAD_SUCCESS,
+  PROFILE_UPDATE_FAIL,
   ProfileDispatchTypes
 } from '../actionTypes/profileActionTypes';
 
 
 export interface ProfileStore {
-  loading: boolean,
-  profile?: PatientDetailsModel,
+  loading: boolean;
+  profile?: PatientDetailsModel;
+  updateFailMsg?: string;
 }
 
 const defaultState: ProfileStore = {
-  loading: false,
+  loading: false
 }
 
 export const profileReducer = (state: ProfileStore = defaultState, action: ProfileDispatchTypes): ProfileStore => {
@@ -35,6 +37,12 @@ export const profileReducer = (state: ProfileStore = defaultState, action: Profi
       return {
         ...state,
         loading: false
+      }
+    }
+    case PROFILE_UPDATE_FAIL: {
+      return {
+        ...state,
+        updateFailMsg: action.payload
       }
     }
     default: return state;

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +8,6 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { PatientDetailsModel } from '../../models/patient-details-model';
-import { AddressModel } from '../../models/address-model';
 
 
 const validationSchema = yup.object({
