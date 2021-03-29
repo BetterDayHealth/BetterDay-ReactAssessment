@@ -9,7 +9,6 @@ import * as yup from 'yup';
 
 import { PatientDetailsModel } from '../../models/patient-details-model';
 
-
 const validationSchema = yup.object({
   firstName: yup.string().required('First Name is required'),
   lastName: yup.string().min(2, 'Too short').max(12, 'Too long').required('Password is required'),
@@ -23,12 +22,17 @@ const validationSchema = yup.object({
   state: yup.string()
 });
 
-const PatientEditForm = ({ id, address, ...props }: PatientDetailsModel) => {
+interface ProfileEditFormProps {
+  profile: PatientDetailsModel,
+  updatePatient: (model: PatientDetailsModel) => void
+}
 
+const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
+  const { id, address, ...profileProps } = profile;
   const [appendAddress, setAppendAddress] = useState<Boolean>(Boolean(address));
 
   const formik = useFormik({
-    initialValues: { ...props, ...address },
+    initialValues: { ...profileProps, ...address },
     validationSchema: validationSchema,
     onSubmit: ({
       firstName, lastName, image, dateOfBirth, phoneNumber,
@@ -37,7 +41,7 @@ const PatientEditForm = ({ id, address, ...props }: PatientDetailsModel) => {
       const patientDetails: PatientDetailsModel = { id, firstName, lastName, image, dateOfBirth, phoneNumber };
       if (appendAddress && address1 && zipCode && city && state)
         patientDetails.address = { address1, address2, zipCode, city, state };
-      console.log(patientDetails);
+      updatePatient(patientDetails);
     },
   });
 

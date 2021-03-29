@@ -25,7 +25,8 @@ export const getProfile = (id: PatientModel['id']) => async (dispatch: Dispatch<
 export const updateProfile = (model: PatientDetailsModel) => async (dispatch: Dispatch<ProfileDispatchTypes>) => {
   try {
     await API.UpdatePatientDetails(model.id, model);
-    getProfile(model.id);
+    const profile: PatientDetailsModel = await API.GetPatientDetails(model.id);
+    dispatch({ type: PROFILE_LOAD_SUCCESS, payload: profile })
   } catch (e) {
     dispatch({ type: PROFILE_UPDATE_FAIL, payload: 'Unsuccessful update' });
   }

@@ -19,6 +19,7 @@ const defaultState: ProfileStore = {
 }
 
 export const profileReducer = (state: ProfileStore = defaultState, action: ProfileDispatchTypes): ProfileStore => {
+
   switch (action.type) {
     case PROFILE_LOADING: {
       return {

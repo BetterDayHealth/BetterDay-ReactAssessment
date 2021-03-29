@@ -34,7 +34,7 @@
     },
     {
       "id": 2623,
-      "fullName": "Yasemin Jeffery"
+      "fullName": "Yaseminssss Jeffery"
     }
   ],
   "patientsDetails": [
@@ -152,16 +152,16 @@
     },
     {
       "id": 2623,
-      "firstName": "Yasemin",
+      "firstName": "Yaseminssss",
       "lastName": "Jeffery",
       "image": "http://placeimg.com/640/480/people?id=2623",
       "dateOfBirth": "1977-04-30",
       "phoneNumber": "2122795524",
       "address": {
-        "address1": "60 Brandywine Drive",
-        "zipCode": "30815",
-        "city": "Hephzibah",
-        "state": "GA"
+        "address1": "Partizanų 54-25",
+        "zipCode": "49447",
+        "city": "Kaunas",
+        "state": "Kauno Apskritis"
       }
     }
   ]
