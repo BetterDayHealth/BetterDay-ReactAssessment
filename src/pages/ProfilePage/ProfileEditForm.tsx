@@ -18,18 +18,28 @@ const validationSchema = yup.object({
   image: yup.string().required('Image is required'),
   dateOfBirth: yup.string().required('Date of birth is required'),
   phoneNumber: yup.string().required('Phone number is required'),
-})
-
+  address1: yup.string(),
+  address2: yup.string(),
+  zipCode: yup.string(),
+  city: yup.string(),
+  state: yup.string()
+});
 
 const PatientEditForm = ({ id, address, ...props }: PatientDetailsModel) => {
 
-  const [showAddressInputs, setShowAddressInputs] = useState<Boolean>(Boolean(address));
+  const [appendAddress, setAppendAddress] = useState<Boolean>(Boolean(address));
 
   const formik = useFormik({
     initialValues: { ...props, ...address },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: ({
+      firstName, lastName, image, dateOfBirth, phoneNumber,
+      address1, address2, zipCode, city, state
+    }) => {
+      const patientDetails: PatientDetailsModel = { id, firstName, lastName, image, dateOfBirth, phoneNumber };
+      if (appendAddress && address1 && zipCode && city && state)
+        patientDetails.address = { address1, address2, zipCode, city, state };
+      console.log(patientDetails);
     },
   });
 
@@ -114,82 +124,76 @@ const PatientEditForm = ({ id, address, ...props }: PatientDetailsModel) => {
                   <Button
                     size="small"
                     variant="outlined"
-                    color={showAddressInputs ? 'secondary' : 'primary'}
-                    onClick={() => setShowAddressInputs(!showAddressInputs)}
-                  >{showAddressInputs ? 'Remove address' : 'Add address'}
+                    color={appendAddress ? 'secondary' : 'primary'}
+                    onClick={() => setAppendAddress(!appendAddress)}
+                  >{appendAddress ? 'Remove address' : 'Add address'}
                   </Button>
                 </Box>
               </Grid>
-              {
-                showAddressInputs
-                  ?
-                  <>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        id="address1"
-                        name="address1"
-                        label="Primary address"
-                        value={formik.values.address1}
-                        onChange={formik.handleChange}
-                        error={formik.touched.address1 && Boolean(formik.errors.address1)}
-                        helperText={formik.touched.address1 && formik.errors.address1}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        id="address2"
-                        name="address2"
-                        label="Secondary address"
-                        value={formik.values.address2}
-                        onChange={formik.handleChange}
-                        error={formik.touched.address2 && Boolean(formik.errors.address2)}
-                        helperText={formik.touched.address2 && formik.errors.address2}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <TextField
-                        fullWidth
-                        id="zipCode"
-                        name="zipCode"
-                        label="Zip code"
-                        value={formik.values.zipCode}
-                        onChange={formik.handleChange}
-                        error={formik.touched.zipCode && Boolean(formik.errors.zipCode)}
-                        helperText={formik.touched.zipCode && formik.errors.zipCode}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <TextField
-                        fullWidth
-                        id="city"
-                        name="city"
-                        label="Zip code"
-                        value={formik.values.city}
-                        onChange={formik.handleChange}
-                        error={formik.touched.city && Boolean(formik.errors.city)}
-                        helperText={formik.touched.city && formik.errors.city}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <TextField
-                        fullWidth
-                        id="state"
-                        name="state"
-                        label="State"
-                        value={formik.values.state}
-                        onChange={formik.handleChange}
-                        error={formik.touched.state && Boolean(formik.errors.state)}
-                        helperText={formik.touched.state && formik.errors.state}
-                      />
-                    </Grid>
-                  </>
-                  : null
+              {appendAddress ?
+                <>
+                  <Grid item xs={12} md={6}>
+                    <TextField
+                      fullWidth
+                      id="address1"
+                      name="address1"
+                      label="Primary address"
+                      value={formik.values.address1}
+                      onChange={formik.handleChange}
+                      error={formik.touched.address1 && Boolean(formik.errors.address1)}
+                      helperText={formik.touched.address1 && formik.errors.address1}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextField
+                      fullWidth
+                      id="address2"
+                      name="address2"
+                      label="Secondary address"
+                      value={formik.values.address2}
+                      onChange={formik.handleChange}
+                      error={formik.touched.address2 && Boolean(formik.errors.address2)}
+                      helperText={formik.touched.address2 && formik.errors.address2}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      fullWidth
+                      id="zipCode"
+                      name="zipCode"
+                      label="Zip code"
+                      value={formik.values.zipCode}
+                      onChange={formik.handleChange}
+                      error={formik.touched.zipCode && Boolean(formik.errors.zipCode)}
+                      helperText={formik.touched.zipCode && formik.errors.zipCode}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      fullWidth
+                      id="city"
+                      name="city"
+                      label="Zip code"
+                      value={formik.values.city}
+                      onChange={formik.handleChange}
+                      error={formik.touched.city && Boolean(formik.errors.city)}
+                      helperText={formik.touched.city && formik.errors.city}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <TextField
+                      fullWidth
+                      id="state"
+                      name="state"
+                      label="State"
+                      value={formik.values.state}
+                      onChange={formik.handleChange}
+                      error={formik.touched.state && Boolean(formik.errors.state)}
+                      helperText={formik.touched.state && formik.errors.state}
+                    />
+                  </Grid>
+                </> : null
               }
-              <Grid item xs={12}><Divider /></Grid>
-
-
             </Grid>
           </Box>
           <Button type="submit" variant="contained" color="primary">Update Profile</Button>
