@@ -16,6 +16,8 @@ const validationSchema = yup.object({
     .required('First Name is required'),
   lastName: yup
     .string()
+    .min(2, 'Too short')
+    .max(12, 'Too long')
     .required('Password is required'),
   image: yup
     .string()
@@ -29,7 +31,8 @@ const validationSchema = yup.object({
 })
 
 
-const PatientEditForm = (props: PatientDetailsModel) => {
+const PatientEditForm = ({ id, address, ...props }: PatientDetailsModel) => {
+  console.log(props);
   const formik = useFormik({
     initialValues: props,
     validationSchema: validationSchema,
@@ -45,12 +48,11 @@ const PatientEditForm = (props: PatientDetailsModel) => {
         <form onSubmit={formik.handleSubmit}>
           <Box mb={3}>
             <Grid container spacing={3}>
-
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  id="first-name"
-                  name="first-name"
+                  id="firstName"
+                  name="firstName"
                   label="First Name"
                   value={formik.values.firstName}
                   onChange={formik.handleChange}
@@ -58,39 +60,35 @@ const PatientEditForm = (props: PatientDetailsModel) => {
                   helperText={formik.touched.firstName && formik.errors.firstName}
                 />
               </Grid>
-
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  id="last-name"
-                  name="last-name"
-                  label="last Name"
+                  id="lastName"
+                  name="lastName"
+                  label="Last Name"
                   value={formik.values.lastName}
                   onChange={formik.handleChange}
                   error={formik.touched.lastName && Boolean(formik.errors.lastName)}
                   helperText={formik.touched.lastName && formik.errors.lastName}
                 />
               </Grid>
-
               <Grid item xs={12} md={12}>
                 <TextField
                   fullWidth
                   id="image"
                   name="image"
-                  label="image"
+                  label="Image source"
                   value={formik.values.image}
                   onChange={formik.handleChange}
                   error={formik.touched.image && Boolean(formik.errors.image)}
                   helperText={formik.touched.image && formik.errors.image}
                 />
               </Grid>
-
               <Grid item xs={12} md={6}>
-
                 <TextField
                   fullWidth
-                  id="date-of-birth"
-                  name="date-of-birth"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
                   label="Date Of Birth"
                   type="date"
                   defaultValue={formik.values.dateOfBirth}
@@ -102,7 +100,27 @@ const PatientEditForm = (props: PatientDetailsModel) => {
                   helperText={formik.touched.dateOfBirth && formik.errors.dateOfBirth}
                 />
               </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  label="Phone Number"
+                  value={formik.values.phoneNumber}
+                  onChange={formik.handleChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
+                  helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+                />
+              </Grid>
+              {
+
+              }
               <Grid item xs={12}><Divider /></Grid>
+
 
             </Grid>
           </Box>
