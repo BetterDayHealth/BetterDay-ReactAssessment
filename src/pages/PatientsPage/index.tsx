@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { Component } from 'react';
+import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -7,28 +7,45 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PatientsList from './PatientsList';
 import { RootStore } from '../../store';
 import { getPatients } from '../../store/actions/patientActions';
+import { PatientModel } from '../../models/patient-model';
 
-const PatientsPage: React.FC = () => {
-  const dispatch = useDispatch();
-  const { patients, loading } = useSelector((state: RootStore) => state.patientsState);
 
-  useEffect(() => {
-    dispatch(getPatients())
-  }, [dispatch]);
-
-  return (
-
-    <Container>
-      <h1>Patient list</h1>
-      {
-        loading
-          ? <CircularProgress />
-          : patients.length === 0
-            ? <Typography variant="h3">There are no patients</Typography>
-            : <PatientsList patients={patients} />
-      }
-    </Container>
-  )
+interface PatientsPageProps {
+  patients: PatientModel[],
+  loading: boolean;
+  getPatients: () => void;
 }
 
-export default PatientsPage;
+class PatientsPage extends Component<PatientsPageProps> {
+  componentDidMount() {
+    this.props.getPatients();
+  }
+
+  render() {
+    return (
+
+      <Container>
+        <h1>Patient list</h1>
+        {
+          this.props.loading
+            ? <CircularProgress />
+            : this.props.patients.length === 0
+              ? <Typography variant="h3">There are no patients</Typography>
+              : <PatientsList patients={this.props.patients} />
+        }
+      </Container>
+    )
+  }
+}
+
+const mapStateToProps = (state: RootStore) => ({
+  patients: state.patientsState.patients,
+  loading: state.patientsState.loading
+})
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getPatients: () => dispatch(getPatients())
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PatientsPage);
