@@ -40,20 +40,19 @@ const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
     city: '',
     state: ''
   });
-  const [primaryValues] = useState(primaryProps);
   const [appendAddress, setAppendAddress] = useState<Boolean>(Boolean(address));
 
 
   const formik = useFormik({
-    initialValues: { ...primaryValues, ...addressValues, addressRequired: appendAddress },
+    initialValues: { ...primaryProps, ...addressValues, addressRequired: appendAddress },
     validationSchema: validationSchema,
     onSubmit: ({
       firstName, lastName, image, dateOfBirth, phoneNumber,
       address1, address2, zipCode, city, state
     }) => {
       const patientDetails: PatientDetailsModel = { id, firstName, lastName, image, dateOfBirth, phoneNumber };
-      if (appendAddress && address1 && zipCode && city && state)
-        patientDetails.address = { address1, address2, zipCode, city, state };
+      if (appendAddress)
+        patientDetails.address = { address1, address2: address2 === '' ? undefined : address2, zipCode, city, state };
       updatePatient(patientDetails);
     },
   });
