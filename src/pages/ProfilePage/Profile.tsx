@@ -1,16 +1,16 @@
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+
 import ProfileImage from './ProfileImage';
 import ProfileAddress from './ProfileAddress';
 import ProfileProperty from './ProfileProperty';
-
 import { PatientDetailsModel } from '../../models/patient-details-model';
 
 interface ProfileProps {
-  profile: PatientDetailsModel
+  profile: PatientDetailsModel;
 }
 
-const Profile = ({ profile }: ProfileProps) => {
+const Profile: React.FC<ProfileProps> = ({ profile }) => {
   const {
     firstName,
     lastName,

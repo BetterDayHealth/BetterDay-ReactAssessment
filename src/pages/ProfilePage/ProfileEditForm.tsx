@@ -31,7 +31,7 @@ interface ProfileEditFormProps {
   updatePatient: (model: PatientDetailsModel) => void
 }
 
-const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
+const PatientEditForm: React.FC<ProfileEditFormProps> = ({ updatePatient, profile }) => {
   const { id, address, ...primaryProps } = profile;
   const [addressValues] = useState(address ?? {
     address1: '',

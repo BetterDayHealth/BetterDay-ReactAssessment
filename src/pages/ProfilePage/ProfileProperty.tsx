@@ -5,7 +5,7 @@ interface ProfilePropertyProps {
   value: string;
 }
 
-const ProfileProperty = ({ name, value }: ProfilePropertyProps) => {
+const ProfileProperty: React.FC<ProfilePropertyProps> = ({ name, value }) => {
   return (
     <Box mt={1}>
       <Grid container>

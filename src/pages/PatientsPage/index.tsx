@@ -41,11 +41,10 @@ class PatientsPage extends Component<PatientsPageProps> {
 const mapStateToProps = (state: RootStore) => ({
   patients: state.patientsState.patients,
   loading: state.patientsState.loading
-})
+});
 
 const mapDispatchToProps = (dispatch: any) => ({
   getPatients: () => dispatch(getPatients())
-})
-
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientsPage);

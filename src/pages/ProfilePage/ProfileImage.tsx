@@ -1,11 +1,5 @@
 import Box from '@material-ui/core/Box';
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
-interface ProfiImageProps {
-  src: string;
-  imgAlt: string;
-}
 
 const useStyles = makeStyles({
   img: {
@@ -15,7 +9,13 @@ const useStyles = makeStyles({
   }
 });
 
-const ProfileImage = ({ src, imgAlt }: ProfiImageProps) => {
+interface ProfiImageProps {
+  src: string;
+  imgAlt: string;
+}
+
+
+const ProfileImage: React.FC<ProfiImageProps> = ({ src, imgAlt }) => {
   const classes = useStyles();
   return (
     <Box my={2}>

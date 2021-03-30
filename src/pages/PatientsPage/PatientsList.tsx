@@ -1,4 +1,3 @@
-import { PatientModel } from '../../models/patient-model';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,11 +7,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from "react-router-dom";
 
-interface Props {
-  patients: PatientModel[]
+import { PatientModel } from '../../models/patient-model';
+
+interface PatientListProps {
+  patients: PatientModel[];
 }
 
-const PatientsList: React.FC<Props> = ({ patients }) => {
+const PatientsList: React.FC<PatientListProps> = ({ patients }) => {
 
   return (
     <TableContainer component={Paper}>

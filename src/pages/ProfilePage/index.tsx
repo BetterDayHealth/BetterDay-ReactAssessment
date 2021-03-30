@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
 
   useEffect(() => {
     dispatch(getProfile(+patientId))
-  }, []);
+  }, [dispatch, patientId]);
 
   const updatePatient = (model: PatientDetailsModel) => {
     dispatch(updateProfile(model));

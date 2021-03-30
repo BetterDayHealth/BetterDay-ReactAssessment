@@ -3,13 +3,13 @@ import ProfileProperty from './ProfileProperty';
 
 import { AddressModel } from '../../models/address-model';
 
-const ProfileAddress = ({
+const ProfileAddress: React.FC<AddressModel> = ({
   address1,
   address2,
   zipCode,
   city,
   state
-}: AddressModel) => {
+}) => {
   return (
     <Box ml={3}>
       <ProfileProperty name="Primary address" value={address1} />
@@ -21,4 +21,4 @@ const ProfileAddress = ({
   )
 }
 
-export default ProfileAddress
+export default ProfileAddress;

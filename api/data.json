@@ -44,13 +44,7 @@
       "lastName": "Craft",
       "image": "http://placeimg.com/640/480/people?id=6",
       "dateOfBirth": "1993-09-28",
-      "phoneNumber": "3039685251",
-      "address": {
-        "address1": "1 Hudson Ave.",
-        "zipCode": "26554",
-        "city": "Fairmont",
-        "state": "WV"
-      }
+      "phoneNumber": "3039685251"
     },
     {
       "id": 124,
