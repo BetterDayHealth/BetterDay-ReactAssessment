@@ -22,7 +22,7 @@
     },
     {
       "id": 978,
-      "fullName": "Daintonsdf Potter"
+      "fullName": "Daintonsdf55 Potter"
     },
     {
       "id": 1654,
@@ -104,11 +104,18 @@
     },
     {
       "id": 978,
-      "firstName": "Daintonsdf",
+      "firstName": "Daintonsdf55",
       "lastName": "Potter",
       "image": "http://placeimg.com/640/480/people?id=978",
       "dateOfBirth": "1967-12-08",
-      "phoneNumber": "6199645205"
+      "phoneNumber": "6199645205",
+      "address": {
+        "address1": "asd",
+        "address2": "asd",
+        "zipCode": "asd",
+        "city": "asd",
+        "state": "asd"
+      }
     },
     {
       "id": 1654,

@@ -43,10 +43,10 @@ const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
   const [primaryValues] = useState(primaryProps);
   const [appendAddress, setAppendAddress] = useState<Boolean>(Boolean(address));
 
+
   const formik = useFormik({
     initialValues: { ...primaryValues, ...addressValues, addressRequired: appendAddress },
     validationSchema: validationSchema,
-    enableReinitialize: true,
     onSubmit: ({
       firstName, lastName, image, dateOfBirth, phoneNumber,
       address1, address2, zipCode, city, state
@@ -108,7 +108,7 @@ const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
                   name="dateOfBirth"
                   label="Date of birth"
                   type="date"
-                  defaultValue={formik.values.dateOfBirth}
+                  value={formik.values.dateOfBirth}
                   onChange={formik.handleChange}
                   InputLabelProps={{
                     shrink: true,
