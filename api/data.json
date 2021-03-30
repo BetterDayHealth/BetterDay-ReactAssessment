@@ -18,15 +18,15 @@
     },
     {
       "id": 856,
-      "fullName": "Zofia Barker"
+      "fullName": "Zof Barker"
     },
     {
       "id": 978,
-      "fullName": "Dainton Potter"
+      "fullName": "Daintonsdf Potter"
     },
     {
       "id": 1654,
-      "fullName": "Madiha Galloway"
+      "fullName": "Madihajh Galloway"
     },
     {
       "id": 1909,
@@ -96,41 +96,29 @@
     },
     {
       "id": 856,
-      "firstName": "Zofia",
+      "firstName": "Zof",
       "lastName": "Barker",
       "image": "http://placeimg.com/640/480/people?id=856",
-      "dateOfBirth": "1987-10-05",
-      "phoneNumber": "2709009202",
-      "address": {
-        "address1": "9 Prairie Street",
-        "zipCode": "17402",
-        "city": "York",
-        "state": "PA"
-      }
+      "dateOfBirth": "1987-10-15",
+      "phoneNumber": "2709009202"
     },
     {
       "id": 978,
-      "firstName": "Dainton",
+      "firstName": "Daintonsdf",
       "lastName": "Potter",
       "image": "http://placeimg.com/640/480/people?id=978",
       "dateOfBirth": "1967-12-08",
-      "phoneNumber": "6199645205",
-      "address": {
-        "address1": "483 Bayberry Drive",
-        "zipCode": "11757",
-        "city": "Lindenhurst",
-        "state": "NY"
-      }
+      "phoneNumber": "6199645205"
     },
     {
       "id": 1654,
-      "firstName": "Madiha",
+      "firstName": "Madihajh",
       "lastName": "Galloway",
       "image": "http://placeimg.com/640/480/people?id=1654",
       "dateOfBirth": "1991-06-05",
       "phoneNumber": "3034521032",
       "address": {
-        "address1": "83 Rocky River Ave.",
+        "address1": "83 Rocky River Ave.asd",
         "zipCode": "37205",
         "city": "Nashville",
         "state": "TN"

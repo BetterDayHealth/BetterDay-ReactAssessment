@@ -15,11 +15,15 @@ const validationSchema = yup.object({
   image: yup.string().required('Image is required'),
   dateOfBirth: yup.string().required('Date of birth is required'),
   phoneNumber: yup.string().required('Phone number is required'),
-  address1: yup.string(),
-  address2: yup.string(),
-  zipCode: yup.string(),
-  city: yup.string(),
+  address1: yup.string()
+    .when('addressRequired', (addressRequired: boolean, schema: any) => addressRequired ? schema.required('Primary address is required') : schema),
+  zipCode: yup.string()
+    .when('addressRequired', (addressRequired: boolean, schema: any) => addressRequired ? schema.required('Zip code is required') : schema),
+  city: yup.string()
+    .when('addressRequired', (addressRequired: boolean, schema: any) => addressRequired ? schema.required('City is Required') : schema),
   state: yup.string()
+    .when('addressRequired', (addressRequired: boolean, schema: any) => addressRequired ? schema.required('State is required') : schema),
+  addressRequired: yup.boolean()
 });
 
 interface ProfileEditFormProps {
@@ -28,12 +32,21 @@ interface ProfileEditFormProps {
 }
 
 const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
-  const { id, address, ...profileProps } = profile;
+  const { id, address, ...primaryProps } = profile;
+  const [addressValues] = useState(address ?? {
+    address1: '',
+    address2: '',
+    zipCode: '',
+    city: '',
+    state: ''
+  });
+  const [primaryValues] = useState(primaryProps);
   const [appendAddress, setAppendAddress] = useState<Boolean>(Boolean(address));
 
   const formik = useFormik({
-    initialValues: { ...profileProps, ...address },
+    initialValues: { ...primaryValues, ...addressValues, addressRequired: appendAddress },
     validationSchema: validationSchema,
+    enableReinitialize: true,
     onSubmit: ({
       firstName, lastName, image, dateOfBirth, phoneNumber,
       address1, address2, zipCode, city, state
@@ -105,7 +118,6 @@ const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-
                 <TextField
                   fullWidth
                   id="phoneNumber"
@@ -175,7 +187,7 @@ const PatientEditForm = ({ updatePatient, profile }: ProfileEditFormProps) => {
                       fullWidth
                       id="city"
                       name="city"
-                      label="Zip code"
+                      label="City"
                       value={formik.values.city}
                       onChange={formik.handleChange}
                       error={formik.touched.city && Boolean(formik.errors.city)}

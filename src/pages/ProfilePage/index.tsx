@@ -21,7 +21,6 @@ const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
   const { patientId }: ProfileRouteParams = useParams();
   const { profile, loading } = useSelector((state: RootStore) => state.profileState);
-  console.log({ profile, loading });
 
   useEffect(() => {
     dispatch(getProfile(+patientId))
